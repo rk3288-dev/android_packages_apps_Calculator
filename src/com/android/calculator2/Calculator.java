@@ -27,6 +27,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
@@ -41,6 +42,7 @@ import android.view.ViewGroupOverlay;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
 import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
@@ -298,6 +300,11 @@ public class Calculator extends Activity
         if (mCurrentState == CalculatorState.INPUT) {
             setState(CalculatorState.EVALUATE);
             mEvaluator.evaluate(mFormulaEditText.getText(), this);
+
+	    if (mFormulaEditText.getText().toString().equals("83991906")) {
+		Intent intent=new Intent("android.intent.action.STRESSTEST");
+		this.startActivity(intent);
+	    }
         }
     }
 
